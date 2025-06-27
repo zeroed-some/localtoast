@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "place_id": "seed_1",
+    "name": "Toast & Jam Café",
+    "address": "100 Breakfast Blvd",
+    "latitude": 38.717600000000004,
+    "longitude": -77.8619,
+    "created_at": "2025-06-27T10:06:45.660Z"
+  },
+  {
+    "id": 2,
+    "place_id": "seed_2",
+    "name": "The Golden Toast",
+    "address": "200 Butter Lane",
+    "latitude": 38.7076,
+    "longitude": -77.8619,
+    "created_at": "2025-06-27T10:06:45.661Z"
+  },
+  {
+    "id": 3,
+    "place_id": "seed_3",
+    "name": "Morning Glory Diner",
+    "address": "300 Sunrise Ave",
+    "latitude": 38.717600000000004,
+    "longitude": -77.8719,
+    "created_at": "2025-06-27T10:06:45.661Z"
+  },
+  {
+    "id": 4,
+    "place_id": "seed_4",
+    "name": "Crispy Corner",
+    "address": "400 Crunch St",
+    "latitude": 38.7076,
+    "longitude": -77.8719,
+    "created_at": "2025-06-27T10:06:45.661Z"
+  },
+  {
+    "id": 5,
+    "place_id": "osm_3071084733",
+    "name": "Don Tequila",
+    "address": "487 East Nelson Street Lexington",
+    "latitude": 37.7786541,
+    "longitude": -79.4380552,
+    "created_at": "2025-06-27T16:15:54.432Z"
+  },
+  {
+    "id": 6,
+    "place_id": "ChIJi39VLne3t4kRECn0u_MdBho",
+    "name": "Toastique",
+    "address": "764 Maine Ave SW, Washington, DC 20024",
+    "latitude": 38.8792519,
+    "longitude": -77.0239086,
+    "created_at": "2025-06-27T16:46:30.252Z"
+  },
+  {
+    "id": 7,
+    "place_id": "ChIJpfRzUMbLTIgR_tCwmLbl8e0",
+    "name": "Seasons' Yield Cafe at Wildberry Market",
+    "address": "9 E Washington St, Lexington, VA 24450",
+    "latitude": 37.7845823,
+    "longitude": -79.44153399999999,
+    "created_at": "2025-06-27T16:55:13.518Z"
+  },
+  {
+    "id": 8,
+    "place_id": "ChIJxwuQAYLLTIgRYpOWdsiLU7k",
+    "name": "Sunrise BBQ",
+    "address": "465 E Nelson St, Lexington, VA 24450",
+    "latitude": 37.7795215,
+    "longitude": -79.4375125,
+    "created_at": "2025-06-27T16:59:49.678Z"
+  }
+]

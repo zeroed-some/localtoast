@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "restaurant_id": 5,
+    "rating": 5,
+    "review": "the toast was beautiful",
+    "created_at": "2025-06-27T16:16:25.712Z"
+  },
+  {
+    "id": 2,
+    "restaurant_id": 8,
+    "rating": 5,
+    "review": "the toast was toasty",
+    "created_at": "2025-06-27T18:06:05.779Z"
+  }
+]

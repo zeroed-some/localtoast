@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+
+  output: 'standalone',
   // Disable SSR for Leaflet components
   transpilePackages: ['leaflet'],
   

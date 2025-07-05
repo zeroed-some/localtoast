@@ -1,48 +1,44 @@
-# Node modules
-node_modules/*
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+.pytest_cache/
 
-# Production build
+*/**/.toastenv
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
 .next/
 out/
-dist/
-
-# Build output from TypeScript (if manually compiled outside Next.js)
-*.tsbuildinfo
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Logs
-logs
+.DS_Store
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-# IDE/editor settings
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# OS-specific cruft
+# Misc
 .DS_Store
-Thumbs.db
-
-# React Query cache (if persisted)
-react-query-cache.json
-
-# Optional: lock files (if using one exclusively)
-# yarn.lock
-# package-lock.json
-# pnpm-lock.yaml
-
-# Optional: system temp
-tmp/
-temp/
-*.swp
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

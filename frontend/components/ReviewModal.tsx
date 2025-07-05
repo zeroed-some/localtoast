@@ -23,7 +23,7 @@ export default function ReviewModal({ restaurant, onClose, onSubmit }: ReviewMod
     try {
       await onSubmit({ rating, review });
       onClose();
-    } catch (error) {
+    } catch {
       // Error handling done in parent
     } finally {
       setIsSubmitting(false);

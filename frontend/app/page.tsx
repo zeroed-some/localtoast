@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { MapPin, Plus, Loader2 } from 'lucide-react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { Plus, Loader2 } from 'lucide-react';
+import { useMutation } from '@tanstack/react-query';
 import { Providers } from './providers';
 import { Loading } from '@/components/Loading';
 import ReviewModal from '@/components/ReviewModal';
@@ -23,7 +23,6 @@ function HomePage() {
   const [searchResultsMinimized, setSearchResultsMinimized] = useState(false);
   const [searchResults, setSearchResults] = useState<PlaceSearchResult[]>([]);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const queryClient = useQueryClient();
 
   // Get user's location
   useEffect(() => {
@@ -58,8 +57,9 @@ function HomePage() {
       }
       alert('Toast rating added! 🍞');
     },
-    onError: (error: any) => {
-      alert(error.response?.data?.error || 'Failed to add rating');
+    onError: (error: unknown) => {
+      const err = error as any;
+      alert(err.response?.data?.error || 'Failed to add rating');
     },
   });
 
@@ -79,8 +79,9 @@ function HomePage() {
       setShowSearchResults(true);
       setSelectedRestaurant(null); // Close any open restaurant panel
     },
-    onError: () => {
-      alert('Failed to search for places');
+    onError: (error: unknown) => {
+      const err = error as any;
+      alert(err.response?.data?.error || 'Failed to search for places');
     },
   });
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, ThumbsUp, ThumbsDown, MessageSquare, MapPin, Star } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, MessageSquare, MapPin } from 'lucide-react';
 import { PlaceSearchResult } from '@/lib/api';
 
 interface SearchPanelProps {

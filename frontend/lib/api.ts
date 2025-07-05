@@ -97,11 +97,13 @@ export const restaurantApi = {
         params: { lat, lng, radius }
       });
       return response.data;
-    } catch (error: any) {
+    } catch (error) {
       // Handle the bizarre 404-with-data issue from Railway
-      if (error.response?.status === 404 && Array.isArray(error.response?.data)) {
-        console.warn('Got 404 with valid data - returning data anyway');
-        return error.response.data;
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404 && Array.isArray(error.response?.data)) {
+          console.warn('Got 404 with valid data - returning data anyway');
+          return error.response.data as PlaceSearchResult[];
+        }
       }
       throw error;
     }

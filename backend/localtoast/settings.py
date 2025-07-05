@@ -111,6 +111,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
     "https://localtoast-frontend.vercel.app",
+    "https://www.localtoast-frontend.vercel.app",
+    "https://www.localtoast.fyi",
     "https://localtoast.fyi",
 ]
 

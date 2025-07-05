@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.utils import timezone
 from django.conf import settings
 from django.db.models import Q
@@ -38,6 +38,15 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 class NearbyRestaurantsView(APIView):
     """Get restaurants near a location"""
+    
+    def options(self, request, *args, **kwargs):
+        """Handle preflight requests"""
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')
+        response['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type, Accept, X-Requested-With'
+        response['Access-Control-Max-Age'] = '3600'
+        return response
     
     def get(self, request):
         lat = request.query_params.get('lat')
@@ -93,6 +102,15 @@ class RestaurantListCreateView(generics.ListCreateAPIView):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
     
+    def options(self, request, *args, **kwargs):
+        """Handle preflight requests"""
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')
+        response['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type, Accept, X-Requested-With'
+        response['Access-Control-Max-Age'] = '3600'
+        return response
+    
     def create(self, request, *args, **kwargs):
         # Check if restaurant already exists
         place_id = request.data.get('place_id')
@@ -109,10 +127,28 @@ class RestaurantDetailView(generics.RetrieveAPIView):
     """Get detailed info about a restaurant"""
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantDetailSerializer
+    
+    def options(self, request, *args, **kwargs):
+        """Handle preflight requests"""
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')
+        response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type, Accept, X-Requested-With'
+        response['Access-Control-Max-Age'] = '3600'
+        return response
 
 
 class RestaurantRatingView(APIView):
     """Add a rating to a restaurant or get all ratings"""
+    
+    def options(self, request, *args, **kwargs):
+        """Handle preflight requests"""
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')
+        response['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type, Accept, X-Requested-With'
+        response['Access-Control-Max-Age'] = '3600'
+        return response
     
     def get(self, request, pk):
         try:
@@ -152,6 +188,15 @@ class RestaurantRatingView(APIView):
 class RestaurantToastStatusView(APIView):
     """Update restaurant's toast status"""
     
+    def options(self, request, *args, **kwargs):
+        """Handle preflight requests"""
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')
+        response['Access-Control-Allow-Methods'] = 'PATCH, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type, Accept, X-Requested-With'
+        response['Access-Control-Max-Age'] = '3600'
+        return response
+    
     def patch(self, request, pk):
         try:
             restaurant = Restaurant.objects.get(pk=pk)
@@ -180,6 +225,15 @@ class RestaurantToastStatusView(APIView):
 
 class SearchPlacesView(APIView):
     """Search for places that might serve toast"""
+    
+    def options(self, request, *args, **kwargs):
+        """Handle preflight requests"""
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = request.headers.get('Origin', '*')
+        response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type, Accept, X-Requested-With'
+        response['Access-Control-Max-Age'] = '3600'
+        return response
     
     def get(self, request):
         lat = request.query_params.get('lat')
@@ -351,6 +405,23 @@ class SearchPlacesView(APIView):
                 'source': 'mock'
             }
         ]
+
+
+@api_view(['GET', 'OPTIONS'])
+def cors_test(request):
+    """Test endpoint for CORS"""
+    if request.method == 'OPTIONS':
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+        response['Access-Control-Allow-Headers'] = '*'
+        return response
+    
+    return Response({
+        'status': 'CORS test successful',
+        'origin': request.headers.get('Origin', 'No origin header'),
+        'method': request.method
+    })
 
 
 @api_view(['POST'])

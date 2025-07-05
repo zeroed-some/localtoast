@@ -5,6 +5,9 @@ urlpatterns = [
     # Health check
     path('health/', views.health_check, name='health_check'),
     
+    # CORS test endpoint
+    path('cors-test/', views.cors_test, name='cors_test'),
+    
     # Restaurant endpoints
     path('restaurants/', views.RestaurantListCreateView.as_view(), name='restaurant_list_create'),
     path('restaurants/nearby/', views.NearbyRestaurantsView.as_view(), name='restaurants_nearby'),

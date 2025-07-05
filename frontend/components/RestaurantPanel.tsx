@@ -26,8 +26,6 @@ export default function RestaurantPanel({ restaurant, onClose, onAddRating }: Re
       setShowRatingForm(false);
       setRating(5);
       setReview('');
-    } catch (_error) {
-      // Error handling done in parent
     } finally {
       setIsSubmitting(false);
     }

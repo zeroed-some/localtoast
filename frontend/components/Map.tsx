@@ -8,8 +8,13 @@ import { Star, ThumbsUp, ThumbsDown, MessageSquare } from 'lucide-react';
 import { Restaurant } from '@/lib/api';
 
 // Fix for default markers in React-Leaflet
+interface LeafletIconDefault extends L.Icon.Default {
+  _getIconUrl?: string;
+}
+
 if (typeof window !== 'undefined') {
-  delete (L.Icon.Default.prototype as Record<string, any>)._getIconUrl;
+  const iconDefault = L.Icon.Default.prototype as LeafletIconDefault;
+  delete iconDefault._getIconUrl;
   L.Icon.Default.mergeOptions({
     iconRetinaUrl: '/leaflet/marker-icon-2x.png',
     iconUrl: '/leaflet/marker-icon.png',

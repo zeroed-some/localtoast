@@ -16,6 +16,15 @@ const Map = dynamic(() => import('@/components/Map'), {
   loading: () => <div className="h-full w-full bg-gray-100 animate-pulse" />,
 });
 
+// Type for API errors
+type ApiError = {
+  response?: {
+    data?: {
+      error?: string;
+    };
+  };
+};
+
 function HomePage() {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
@@ -96,8 +105,8 @@ function HomePage() {
         setRestaurants(updatedRestaurants);
       }
     },
-    onError: () => {
-      alert('Failed to update toast status');
+    onError: (error: ApiError) => {
+      alert(error.response?.data?.error || 'Failed to update toast status');
     },
   });
 

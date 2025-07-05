@@ -67,8 +67,8 @@ function HomePage() {
       alert('Toast rating added! 🍞');
     },
     onError: (error: unknown) => {
-      const err = error as any;
-      alert(err.response?.data?.error || 'Failed to add rating');
+      const apiError = error as ApiError;
+      alert(apiError.response?.data?.error || 'Failed to add rating');
     },
   });
 
@@ -89,8 +89,8 @@ function HomePage() {
       setSelectedRestaurant(null); // Close any open restaurant panel
     },
     onError: (error: unknown) => {
-      const err = error as any;
-      alert(err.response?.data?.error || 'Failed to search for places');
+      const apiError = error as ApiError;
+      alert(apiError.response?.data?.error || 'Failed to search for places');
     },
   });
 
@@ -105,8 +105,9 @@ function HomePage() {
         setRestaurants(updatedRestaurants);
       }
     },
-    onError: (error: ApiError) => {
-      alert(error.response?.data?.error || 'Failed to update toast status');
+    onError: (error: unknown) => {
+      const apiError = error as ApiError;
+      alert(apiError.response?.data?.error || 'Failed to update toast status');
     },
   });
 

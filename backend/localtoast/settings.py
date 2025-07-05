@@ -110,7 +110,8 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://localtoast.fyi", # change me matt
+    "https://localtoast-frontend.vercel.app",
+    "https://localtoast.fyi",
 ]
 
 # Allow CORS during development

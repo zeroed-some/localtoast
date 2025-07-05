@@ -1,33 +1,15 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "localtoast",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@tanstack/react-query": "^5.81.2",
-    "axios": "^1.10.0",
-    "leaflet": "^1.9.4",
-    "lucide-react": "^0.263.1",
-    "next": "15.3.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-leaflet": "^5.0.0"
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && python manage.py runserver",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "cd frontend && npm install",
+    "build:frontend": "cd frontend && npm run build"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/leaflet": "^1.9.19",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "concurrently": "^8.2.2"
   }
 }

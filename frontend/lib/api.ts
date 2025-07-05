@@ -90,12 +90,21 @@ export const restaurantApi = {
     return response.data;
   },
 
-  // Search places
+  // Search places - FIXED to handle 404 with data
   searchPlaces: async (lat: number, lng: number, radius: number = 1000) => {
-    const response = await api.get<PlaceSearchResult[]>('/search/places/', {
-      params: { lat, lng, radius }
-    });
-    return response.data;
+    try {
+      const response = await api.get<PlaceSearchResult[]>('/search/places/', {
+        params: { lat, lng, radius }
+      });
+      return response.data;
+    } catch (error: any) {
+      // Handle the bizarre 404-with-data issue from Railway
+      if (error.response?.status === 404 && Array.isArray(error.response?.data)) {
+        console.warn('Got 404 with valid data - returning data anyway');
+        return error.response.data;
+      }
+      throw error;
+    }
   },
 
   // Seed data
